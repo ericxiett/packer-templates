@@ -1,0 +1,37 @@
+{
+  "description":"CentOS7.4 x86_64 minimal for Packer",
+  "min_packer_version":"1.0.0",
+  "builders":
+  [
+    {
+      "vm_name": "centos74x64.qcow2",
+      "qemu_binary": "qemu-system-x86_64",
+      "type": "qemu",
+      "iso_url": "http://172.23.21.1/iso/linux/centos/CentOS-7-x86_64-Minimal-1708.iso",
+      "iso_checksum": "5848f2fd31c7acf3811ad88eaca6f4aa",
+      "iso_checksum_type": "md5",
+      "output_directory": "output_centos7",
+      "shutdown_command": "shutdown -P now",
+      "disk_size": 20000,
+      "format": "qcow2",
+      "qemuargs": [
+        [ "-m", "2048m" ]
+      ],
+      "headless": true,
+      "accelerator": "kvm",
+      "http_directory": "httpdir",
+      "ssh_username": "root",
+      "ssh_password": "Lc13yfwpW",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "30000s",
+      "vnc_bind_address": "0.0.0.0",
+      "net_device": "virtio-net",
+      "disk_interface": "virtio",
+      "disk_compression": true,
+      "boot_wait": "10s",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos7/ks.cfg<enter><wait>"
+      ]
+    }
+  ]
+}
