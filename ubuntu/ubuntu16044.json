@@ -16,7 +16,7 @@
       "ssh_port": 22,
       "ssh_username": "root",
       "ssh_password": "Lc13yfwpW",
-      "ssh_wait_timeout": "10m",
+      "ssh_wait_timeout": "20m",
       "vm_name": "ubuntu16044build",
       "net_device": "virtio-net",
       "disk_interface": "virtio",
@@ -44,7 +44,7 @@
         "net.ifnames=0 ",
         "auto-install/enable=true ",
         "debconf/priority=critical ",
-        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu-16.04/preseed.cfg ",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu/preseed.cfg ",
         "<enter>"
       ]
     }
@@ -52,14 +52,7 @@
   "post-processors": [{
     "type": "vagrant",
     "compression_level": "6",
-    "output": "ubuntu16043x86_64.qcow2"
-  }],
-  "provisioners": [{
-    "type": "shell",
-    "scripts": [
-      "scripts/sshd.sh",
-      "scripts/cleanup.sh",
-      "scripts/minimize.sh"
-    ]
+    "output": "ubuntu16044x86_64.qcow2"
   }]
 }
+
