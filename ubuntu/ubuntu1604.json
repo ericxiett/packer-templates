@@ -3,9 +3,9 @@
   [
     {
       "type": "qemu",
-      "iso_url": "http://172.23.11.11/iso/linux/ubuntu/ubuntu-16.04.4-server-amd64.iso",
+      "iso_url": "http://10.2.32.9/isos/ubuntu-16.04.5-server-amd64.iso",
       "iso_checksum_type": "md5",
-      "iso_checksum": "6a7f31eb125a0b2908cf2333d7777c82",
+      "iso_checksum": "24636fd103a2a43c95659f1c3c63718e",
       "output_directory": "output_m",
       "shutdown_command": "sudo systemctl poweroff",
       "disk_size": 40960,
@@ -14,18 +14,18 @@
       "accelerator": "kvm",
       "http_directory": "httpdir",
       "ssh_port": 22,
-      "ssh_username": "root",
+      "ssh_username": "ubuntu",
       "ssh_password": "Lc13yfwpW",
       "ssh_wait_timeout": "20m",
-      "vm_name": "ubuntu16044build",
+      "vm_name": "ubuntu1604",
       "net_device": "virtio-net",
       "disk_interface": "virtio",
-      "qemu_binary": "qemu-kvm",
+      "vnc_bind_address": "0.0.0.0",
       "qemuargs": [
         ["-m", "2048"],
-        ["-smp", "2"]
+        ["-smp", "2"],
+        ["-display", "vnc=:5"]
       ],
-      "vnc_bind_address": "0.0.0.0",
       "boot_wait": "5s",
       "boot_command": [
         "<enter><wait>",
@@ -48,11 +48,6 @@
         "<enter>"
       ]
     }
-  ],
-  "post-processors": [{
-    "type": "vagrant",
-    "compression_level": "6",
-    "output": "ubuntu16044x86_64.qcow2"
-  }]
+  ]
 }
 
