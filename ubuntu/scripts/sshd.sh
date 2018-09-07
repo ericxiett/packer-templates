@@ -3,7 +3,13 @@
 set -e
 set -x
 
-sudo tee -a /etc/ssh/sshd_config <<EOF
+SSHDCONF=/etc/ssh/sshd_config
+
+sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' $SSHDCONF
+
+sudo tee -a $SSHDCONF <<EOF
 
 UseDNS no
 EOF
+
+systemctl restart ssh

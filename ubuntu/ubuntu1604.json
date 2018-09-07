@@ -14,9 +14,9 @@
       "accelerator": "kvm",
       "http_directory": "httpdir",
       "ssh_port": 22,
-      "ssh_username": "ubuntu",
+      "ssh_username": "root",
       "ssh_password": "Lc13yfwpW",
-      "ssh_wait_timeout": "20m",
+      "ssh_wait_timeout": "10m",
       "vm_name": "ubuntu1604",
       "net_device": "virtio-net",
       "disk_interface": "virtio",
@@ -47,6 +47,15 @@
         "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu/preseed.cfg ",
         "<enter>"
       ]
+    }
+  ],
+  "provisioners": [
+    {
+      "scripts": [
+        "scripts/sshd.sh",
+        "scripts/cloudinit.sh"
+      ],
+      "type": "shell"
     }
   ]
 }
