@@ -10,12 +10,11 @@ apt install -y cloud-init
 # Config
 cd /etc/cloud
 CLOUDCFG=cloud.cfg
-mv $CLOUDCFG $CLOUDCFG_bak
+mv $CLOUDCFG ${CLOUDCFG}_bak
 tee -a $CLOUDCFG << EOF
 users:
    - name: root
      lock_passwd: False
-     disable_root:
 disable_root: false
 network:
   config: disabled
